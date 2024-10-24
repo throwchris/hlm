@@ -17,11 +17,10 @@ document.getElementById('start-btn').addEventListener('click', () => {
 
     recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
-        document.getElementById('result').textContent = `You said: ${transcript}`;
         
-        // Clear the result after 10 seconds
-        clearResultAfterDelay();
-
+        // Only alert the user of the spoken command
+        console.log(`You said: ${transcript}`);
+        
         if (transcript.toLowerCase().startsWith("find")) {
             const searchTerm = transcript.substring(4).trim();
             const count = highlightWords(searchTerm);
@@ -72,13 +71,6 @@ function scrollToFirstHighlight() {
     if (firstHighlight) {
         firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-}
-
-// Clear result message after 10 seconds
-function clearResultAfterDelay() {
-    setTimeout(() => {
-        document.getElementById('result').textContent = '';
-    }, 10000); // 10000 milliseconds = 10 seconds
 }
 
 // Toggle background color
