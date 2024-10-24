@@ -24,5 +24,10 @@ body {
     
    }
 
+   .highlight {
+    background-color: yellow;
+    color: black; /* Black text color for visibility */
+}
+
    
   
